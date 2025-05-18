@@ -450,14 +450,18 @@ function App() {
 
   // Open partner modal
   const openPartnerModal = (partner) => {
+    console.log("Opening modal for partner:", partner.name);
     setSelectedPartner(partner);
     setShowModal(true);
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
   };
 
   // Close partner modal
   const closePartnerModal = () => {
+    console.log("Closing partner modal");
     setSelectedPartner(null);
     setShowModal(false);
+    document.body.style.overflow = 'auto'; // Re-enable scrolling
   };
 
   // Get current partners for pagination
