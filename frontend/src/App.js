@@ -471,6 +471,33 @@ function App() {
     document.body.style.overflow = 'auto'; // Re-enable scrolling
   };
 
+  // Handle image load
+  const handleImageLoad = (partnerId) => {
+    setImagesLoaded(prev => ({...prev, [partnerId]: true}));
+  };
+
+  // Scroll to top function
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  // Handle scroll event to show/hide back-to-top button
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 400) {
+        setShowBackToTop(true);
+      } else {
+        setShowBackToTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   // Get current partners for pagination
   const indexOfLastPartner = currentPage * partnersPerPage;
   const indexOfFirstPartner = indexOfLastPartner - partnersPerPage;
