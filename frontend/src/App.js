@@ -838,12 +838,41 @@ function App() {
                 <div className="mb-6">
                   <h3 className="text-xl font-semibold mb-3">Announcement</h3>
                   <div className="border border-gray-300 rounded-lg overflow-hidden">
-                    <div className="twitter-embed" dangerouslySetInnerHTML={{
-                      __html: `<blockquote class="twitter-tweet" data-theme="light">
-                        <a href="${selectedPartner.twitterUrl}"></a>
-                      </blockquote>
-                      <script async src="https://platform.twitter.com/widgets.js"></script>`
-                    }} />
+                    <div className="twitter-embed p-4">
+                      <p className="mb-4 text-gray-700">Twitter announcement for {selectedPartner.name}:</p>
+                      <a 
+                        href={selectedPartner.twitterUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-blue-500 hover:underline block mb-4"
+                      >
+                        {selectedPartner.twitterUrl}
+                      </a>
+                      
+                      {/* Twitter Embed Fallback */}
+                      <div className="bg-gray-100 p-4 rounded-lg">
+                        <p className="text-sm text-gray-600 mb-2">Click below to view the full announcement:</p>
+                        <a 
+                          href={selectedPartner.twitterUrl} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors duration-300 inline-flex items-center"
+                        >
+                          <FaTwitter className="mr-2" />
+                          <span>View on Twitter</span>
+                        </a>
+                      </div>
+                      
+                      {/* Hidden Twitter Embed (will load if Twitter script works) */}
+                      <div className="mt-4" dangerouslySetInnerHTML={{
+                        __html: `
+                          <blockquote class="twitter-tweet" data-theme="light">
+                            <a href="${selectedPartner.twitterUrl}"></a>
+                          </blockquote>
+                          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        `
+                      }} />
+                    </div>
                   </div>
                 </div>
               )}
