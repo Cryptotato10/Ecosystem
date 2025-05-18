@@ -424,7 +424,12 @@ function App() {
     setActiveCategory(category);
     if (category === 'all') {
       setFilteredPartners(partners);
+    } else if (category === 'Web3') {
+      // Filter by category field for Web3 partners
+      const filtered = partners.filter(partner => partner.category === 'Web3');
+      setFilteredPartners(filtered);
     } else {
+      // Filter by status field for Business and Research partners
       const filtered = partners.filter(partner => partner.status.includes(category));
       setFilteredPartners(filtered);
     }
