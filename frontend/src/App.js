@@ -609,12 +609,19 @@ function App() {
                     <img 
                       src={partner.logo} 
                       alt={partner.name} 
-                      className="max-h-32 max-w-full" 
+                      className={`max-h-32 max-w-full transition-opacity duration-300 ${imagesLoaded[partner.name] ? 'opacity-100' : 'opacity-0'}`} 
+                      onLoad={() => handleImageLoad(partner.name)}
                       onError={(e) => {
                         e.target.onerror = null;
                         e.target.src = "https://www.netmind.ai/assets/netmind_ai_white-ca9d065a.svg";
+                        handleImageLoad(partner.name);
                       }}
                     />
+                    {!imagesLoaded[partner.name] && (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-10 h-10 border-4 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
+                      </div>
+                    )}
                   </div>
                   <div className="p-6">
                     <div className="flex justify-between items-start mb-3">
