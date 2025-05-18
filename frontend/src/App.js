@@ -568,6 +568,8 @@ function App() {
                   className="partner-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-xl cursor-pointer animate-fade-in"
                   onClick={() => openPartnerModal(partner)}
                   style={{animationDelay: `${index * 100}ms`}}
+                  role="button"
+                  tabIndex={0}
                 >
                   <div className="h-40 bg-gray-100 flex items-center justify-center p-4">
                     <img 
