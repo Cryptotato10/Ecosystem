@@ -760,8 +760,8 @@ function App() {
 
       {/* Partner Modal */}
       {showModal && selectedPartner && (
-        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4 animate-fade-in">
-          <div className="bg-white rounded-lg w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4 animate-fade-in" onClick={closePartnerModal}>
+          <div className="bg-white rounded-lg w-full max-w-4xl max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
             <div className="p-6">
               <div className="flex justify-between items-start mb-6">
                 <div className="flex items-center">
@@ -792,6 +792,7 @@ function App() {
                 <button 
                   onClick={closePartnerModal}
                   className="text-gray-500 hover:text-gray-700 transition-colors duration-300"
+                  aria-label="Close modal"
                 >
                   <FaTimes className="text-2xl" />
                 </button>
