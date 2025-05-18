@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { FaSearch, FaTimes, FaTwitter, FaEthereum, FaAngleRight, FaAngleLeft, FaLink } from 'react-icons/fa';
+import React, { useState, useEffect, useRef } from 'react';
+import { FaSearch, FaTimes, FaTwitter, FaEthereum, FaAngleRight, FaAngleLeft, FaLink, FaArrowUp } from 'react-icons/fa';
 import { SiSolana, SiBinance } from 'react-icons/si';
 import './App.css';
 
