@@ -810,12 +810,19 @@ function App() {
                     <img 
                       src={selectedPartner.logo} 
                       alt={selectedPartner.name} 
-                      className="max-h-16 max-w-16" 
+                      className={`max-h-16 max-w-16 transition-opacity duration-300 ${imagesLoaded[selectedPartner.name + "-modal"] ? 'opacity-100' : 'opacity-0'}`}
+                      onLoad={() => handleImageLoad(selectedPartner.name + "-modal")}
                       onError={(e) => {
                         e.target.onerror = null;
                         e.target.src = "https://www.netmind.ai/assets/netmind_ai_white-ca9d065a.svg";
+                        handleImageLoad(selectedPartner.name + "-modal");
                       }}
                     />
+                    {!imagesLoaded[selectedPartner.name + "-modal"] && (
+                      <div className="absolute flex items-center justify-center">
+                        <div className="w-6 h-6 border-2 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
+                      </div>
+                    )}
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold">{selectedPartner.name}</h2>
@@ -924,6 +931,17 @@ function App() {
             </div>
           </div>
         </div>
+      )}
+
+      {/* Back to Top Button */}
+      {showBackToTop && (
+        <button 
+          onClick={scrollToTop} 
+          className="fixed right-8 bottom-8 p-4 bg-orange-500 text-white rounded-full shadow-lg hover:bg-orange-600 transition-all duration-300 transform hover:scale-110 z-40"
+          aria-label="Back to top"
+        >
+          <FaArrowUp />
+        </button>
       )}
     </div>
   );
