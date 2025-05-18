@@ -22,7 +22,7 @@ body {
 /* Hero Section */
 .hero-section {
   position: relative;
-  background: url('https://images.unsplash.com/photo-1597733336794-12d05021d510?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDN8MHwxfHNlYXJjaHw0fHxuZXR3b3JrJTIwbm9kZXN8ZW58MHx8fGJsdWV8MTc0NzU2ODk2Nnww&ixlib=rb-4.1.0&q=85') center/cover no-repeat;
+  background: url('https://images.unsplash.com/photo-1597733336794-12d05021d510') center/cover no-repeat;
   color: var(--light-color);
   min-height: 500px;
   display: flex;
@@ -81,12 +81,32 @@ body {
 
 /* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.fade-in {
-  animation: fadeIn 0.5s ease-in-out;
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animation-delay-500 {
+  animation-delay: 500ms;
+}
+
+/* Twitter Embed */
+.twitter-embed {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.twitter-embed iframe {
+  width: 100% !important;
 }
 
 /* Responsive Adjustments */
