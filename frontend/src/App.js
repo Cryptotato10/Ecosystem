@@ -11,6 +11,8 @@ function App() {
   const [selectedPartner, setSelectedPartner] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const [showBackToTop, setShowBackToTop] = useState(false);
+  const [imagesLoaded, setImagesLoaded] = useState({});
   const partnersPerPage = 9;
 
   // Partners data
