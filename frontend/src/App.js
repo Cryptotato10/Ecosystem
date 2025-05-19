@@ -728,7 +728,7 @@ function App() {
                 <button 
                   onClick={() => paginate(currentPage > 1 ? currentPage - 1 : 1)}
                   disabled={currentPage === 1}
-                  className={`px-4 py-2 rounded-md ${currentPage === 1 ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-gray-800 text-white hover:bg-gray-700'}`}
+                  className={`px-4 py-2 rounded-md ${currentPage === 1 ? 'bg-gray-700 text-gray-500 cursor-not-allowed' : 'bg-gray-800 text-white hover:bg-gray-700'}`}
                 >
                   <FaAngleLeft />
                 </button>
@@ -738,7 +738,7 @@ function App() {
                   <button
                     key={index}
                     onClick={() => paginate(index + 1)}
-                    className={`px-4 py-2 rounded-md ${currentPage === index + 1 ? 'bg-orange-500 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
+                    className={`px-4 py-2 rounded-md ${currentPage === index + 1 ? 'netmind-button' : 'bg-gray-800 text-gray-300 hover:bg-gray-700'}`}
                   >
                     {index + 1}
                   </button>
@@ -747,7 +747,7 @@ function App() {
                 <button 
                   onClick={() => paginate(currentPage < Math.ceil(filteredPartners.length / partnersPerPage) ? currentPage + 1 : Math.ceil(filteredPartners.length / partnersPerPage))}
                   disabled={currentPage === Math.ceil(filteredPartners.length / partnersPerPage)}
-                  className={`px-4 py-2 rounded-md ${currentPage === Math.ceil(filteredPartners.length / partnersPerPage) ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-gray-800 text-white hover:bg-gray-700'}`}
+                  className={`px-4 py-2 rounded-md ${currentPage === Math.ceil(filteredPartners.length / partnersPerPage) ? 'bg-gray-700 text-gray-500 cursor-not-allowed' : 'bg-gray-800 text-white hover:bg-gray-700'}`}
                 >
                   <FaAngleRight />
                 </button>
