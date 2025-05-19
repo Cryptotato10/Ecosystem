@@ -640,33 +640,33 @@ function App() {
       </section>
 
       {/* Partners Grid */}
-      <section className="partners-grid bg-gray-100 py-20">
+      <section className="partners-grid py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
+          <h2 className="text-3xl font-bold text-center mb-12 text-white">
             <span className="section-heading">Partners</span>
           </h2>
           
           {isLoading ? (
             <div className="flex flex-col items-center justify-center py-12">
               <div className="w-16 h-16 border-4 border-orange-500 border-t-transparent rounded-full spinning-icon mb-4"></div>
-              <p className="text-xl text-gray-500">Loading partners...</p>
+              <p className="text-xl text-gray-300">Loading partners...</p>
             </div>
           ) : currentPartners.length === 0 ? (
             <div className="text-center py-12">
-              <p className="text-xl text-gray-500">No partners found matching your criteria.</p>
+              <p className="text-xl text-gray-300">No partners found matching your criteria.</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {currentPartners.map((partner, index) => (
                 <div 
                   key={index} 
-                  className="partner-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 cursor-pointer animate-fade-in"
+                  className="partner-card rounded-lg shadow-lg overflow-hidden transition-all duration-300 cursor-pointer animate-fade-in"
                   onClick={() => openPartnerModal(partner)}
                   role="button"
                   tabIndex={0}
                   style={{animationDelay: `${(index % 3) * 100 + Math.floor(index / 3) * 150}ms`}}
                 >
-                  <div className="h-40 bg-gray-100 flex items-center justify-center p-4 relative">
+                  <div className="h-40 bg-gray-800 flex items-center justify-center p-4 relative">
                     <img 
                       src={partner.logo} 
                       alt={partner.name} 
@@ -684,9 +684,9 @@ function App() {
                       </div>
                     )}
                   </div>
-                  <div className="p-6">
+                  <div className="p-6 netmind-card-content">
                     <div className="flex justify-between items-start mb-3">
-                      <h3 className="text-xl font-bold">{partner.name}</h3>
+                      <h3 className="text-xl font-bold text-white">{partner.name}</h3>
                       <span className={`px-3 py-1 rounded-full text-xs ${
                         partner.status.includes('Research') 
                           ? 'bg-blue-100 text-blue-800' 
@@ -697,19 +697,19 @@ function App() {
                         {partner.status}
                       </span>
                     </div>
-                    <p className="text-gray-600 mb-4 line-clamp-3">{partner.description}</p>
+                    <p className="text-gray-300 mb-4 line-clamp-3">{partner.description}</p>
                     <div className="flex justify-between items-center">
-                      <span className={`px-3 py-1 rounded-full text-xs bg-gray-200 text-gray-700`}>
+                      <span className={`px-3 py-1 rounded-full text-xs bg-gray-700 text-gray-200`}>
                         {partner.category || 'Partner'}
                       </span>
                       <div className="flex space-x-2">
                         {partner.website && (
-                          <a href={partner.website} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-700" onClick={(e) => e.stopPropagation()}>
+                          <a href={partner.website} target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white" onClick={(e) => e.stopPropagation()}>
                             <FaLink />
                           </a>
                         )}
                         {partner.twitterUrl && (
-                          <a href={partner.twitterUrl} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-700" onClick={(e) => e.stopPropagation()}>
+                          <a href={partner.twitterUrl} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300" onClick={(e) => e.stopPropagation()}>
                             <FaTwitter />
                           </a>
                         )}
