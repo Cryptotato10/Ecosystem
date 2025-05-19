@@ -276,8 +276,12 @@ function App() {
       }
     ];
 
-    setPartners(partnersData);
-    setFilteredPartners(partnersData);
+    // Simulate loading data
+    setTimeout(() => {
+      setPartners(partnersData);
+      setFilteredPartners(partnersData);
+      setIsLoading(false);
+    }, 1500);
   }, []);
 
   // Blockchains data
