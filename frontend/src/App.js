@@ -998,7 +998,7 @@ function App() {
       {showBackToTop && (
         <button 
           onClick={scrollToTop} 
-          className="fixed right-8 bottom-8 p-4 bg-orange-500 text-white rounded-full shadow-lg hover:bg-orange-600 transition-all duration-300 transform hover:scale-110 z-40 fade-in animate-pulse"
+          className="fixed right-8 bottom-8 p-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-lg shadow-lg hover:from-orange-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-110 z-40 fade-in animate-pulse"
           aria-label="Back to top"
         >
           <FaArrowUp />
