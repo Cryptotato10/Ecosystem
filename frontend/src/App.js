@@ -612,25 +612,25 @@ function App() {
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-4">
             <button 
-              className={`px-6 py-2 rounded-full transition-all duration-300 ${activeCategory === 'all' ? 'bg-orange-500 text-white transform scale-105 glow-border' : 'bg-gray-800 text-gray-300 hover:bg-gray-700'}`}
+              className={`netmind-button ${activeCategory === 'all' ? 'glow-border' : 'opacity-75 hover:opacity-100'}`}
               onClick={() => filterByCategory('all')}
             >
               All Partners
             </button>
             <button 
-              className={`px-6 py-2 rounded-full transition-all duration-300 ${activeCategory === 'Business' ? 'bg-orange-500 text-white transform scale-105 glow-border' : 'bg-gray-800 text-gray-300 hover:bg-gray-700'}`}
+              className={`netmind-button ${activeCategory === 'Business' ? 'glow-border' : 'opacity-75 hover:opacity-100'}`}
               onClick={() => filterByCategory('Business')}
             >
               Business Partners
             </button>
             <button 
-              className={`px-6 py-2 rounded-full transition-all duration-300 ${activeCategory === 'Research' ? 'bg-orange-500 text-white transform scale-105 glow-border' : 'bg-gray-800 text-gray-300 hover:bg-gray-700'}`}
+              className={`netmind-button ${activeCategory === 'Research' ? 'glow-border' : 'opacity-75 hover:opacity-100'}`}
               onClick={() => filterByCategory('Research')}
             >
               Research Partners
             </button>
             <button 
-              className={`px-6 py-2 rounded-full transition-all duration-300 ${activeCategory === 'Web3' ? 'bg-orange-500 text-white transform scale-105 glow-border' : 'bg-gray-800 text-gray-300 hover:bg-gray-700'}`}
+              className={`netmind-button-secondary ${activeCategory === 'Web3' ? 'glow-border' : 'opacity-75 hover:opacity-100'}`}
               onClick={() => filterByCategory('Web3')}
             >
               Web3 Partners
