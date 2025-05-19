@@ -565,6 +565,25 @@ function App() {
       {/* Hero Section */}
       <section className="hero-section">
         <div className="overlay"></div>
+        
+        {/* Particle Animation Background */}
+        <div className="particle-background" ref={particleRef}>
+          {particles.map(particle => (
+            <div 
+              key={particle.id}
+              className="atom"
+              style={{
+                left: `${particle.x}%`,
+                top: `${particle.y}%`,
+                width: `${particle.size}px`,
+                height: `${particle.size}px`,
+                backgroundColor: particle.color,
+                animationDelay: `${particle.delay}s`
+              }}
+            />
+          ))}
+        </div>
+        
         <div className="hero-content container mx-auto py-20 px-4 text-center">
           <h1 className="text-5xl font-bold text-white mb-4 fade-in">
             NetMind <span className="text-orange-500">Ecosystem</span>
@@ -578,7 +597,7 @@ function App() {
               <input 
                 type="text" 
                 placeholder="Search partners..." 
-                className="w-full px-6 py-3 rounded-full bg-white bg-opacity-20 text-white placeholder-gray-300 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className="w-full px-6 py-3 rounded-full bg-gray-800 bg-opacity-70 text-white placeholder-gray-300 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-orange-500"
                 value={searchTerm}
                 onChange={handleSearch}
               />
