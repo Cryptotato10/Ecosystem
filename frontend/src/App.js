@@ -541,14 +541,14 @@ function App() {
       <section className="hero-section">
         <div className="overlay"></div>
         <div className="hero-content container mx-auto py-20 px-4 text-center">
-          <h1 className="text-5xl font-bold text-white mb-4 animate-fade-in">
+          <h1 className="text-5xl font-bold text-white mb-4 fade-in">
             NetMind <span className="text-orange-500">Ecosystem</span>
           </h1>
-          <p className="text-xl text-white mb-8 max-w-3xl mx-auto animate-fade-in animation-delay-300">
+          <p className="text-xl text-white mb-8 max-w-3xl mx-auto fade-in animation-delay-300">
             Explore our growing network of partners, integrations, and exchanges 
             powering the NetMind decentralized intelligence infrastructure.
           </p>
-          <div className="search-bar mx-auto animate-fade-in animation-delay-500">
+          <div className="search-bar mx-auto fade-in animation-delay-500">
             <div className="relative">
               <input 
                 type="text" 
@@ -568,25 +568,25 @@ function App() {
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-4">
             <button 
-              className={`px-6 py-2 rounded-full transition-all duration-300 ${activeCategory === 'all' ? 'bg-orange-500 text-white transform scale-105' : 'bg-gray-800 text-gray-300 hover:bg-gray-700'}`}
+              className={`px-6 py-2 rounded-full transition-all duration-300 ${activeCategory === 'all' ? 'bg-orange-500 text-white transform scale-105 glow-border' : 'bg-gray-800 text-gray-300 hover:bg-gray-700'}`}
               onClick={() => filterByCategory('all')}
             >
               All Partners
             </button>
             <button 
-              className={`px-6 py-2 rounded-full transition-all duration-300 ${activeCategory === 'Business' ? 'bg-orange-500 text-white transform scale-105' : 'bg-gray-800 text-gray-300 hover:bg-gray-700'}`}
+              className={`px-6 py-2 rounded-full transition-all duration-300 ${activeCategory === 'Business' ? 'bg-orange-500 text-white transform scale-105 glow-border' : 'bg-gray-800 text-gray-300 hover:bg-gray-700'}`}
               onClick={() => filterByCategory('Business')}
             >
               Business Partners
             </button>
             <button 
-              className={`px-6 py-2 rounded-full transition-all duration-300 ${activeCategory === 'Research' ? 'bg-orange-500 text-white transform scale-105' : 'bg-gray-800 text-gray-300 hover:bg-gray-700'}`}
+              className={`px-6 py-2 rounded-full transition-all duration-300 ${activeCategory === 'Research' ? 'bg-orange-500 text-white transform scale-105 glow-border' : 'bg-gray-800 text-gray-300 hover:bg-gray-700'}`}
               onClick={() => filterByCategory('Research')}
             >
               Research Partners
             </button>
             <button 
-              className={`px-6 py-2 rounded-full transition-all duration-300 ${activeCategory === 'Web3' ? 'bg-orange-500 text-white transform scale-105' : 'bg-gray-800 text-gray-300 hover:bg-gray-700'}`}
+              className={`px-6 py-2 rounded-full transition-all duration-300 ${activeCategory === 'Web3' ? 'bg-orange-500 text-white transform scale-105 glow-border' : 'bg-gray-800 text-gray-300 hover:bg-gray-700'}`}
               onClick={() => filterByCategory('Web3')}
             >
               Web3 Partners
@@ -599,10 +599,15 @@ function App() {
       <section className="partners-grid bg-gray-100 py-20">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
-            <span className="border-b-4 border-orange-500 pb-2">Partners</span>
+            <span className="section-heading">Partners</span>
           </h2>
           
-          {currentPartners.length === 0 ? (
+          {isLoading ? (
+            <div className="flex flex-col items-center justify-center py-12">
+              <div className="w-16 h-16 border-4 border-orange-500 border-t-transparent rounded-full spinning-icon mb-4"></div>
+              <p className="text-xl text-gray-500">Loading partners...</p>
+            </div>
+          ) : currentPartners.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-xl text-gray-500">No partners found matching your criteria.</p>
             </div>
@@ -611,17 +616,17 @@ function App() {
               {currentPartners.map((partner, index) => (
                 <div 
                   key={index} 
-                  className="partner-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-xl cursor-pointer animate-fade-in"
+                  className="partner-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 cursor-pointer animate-fade-in"
                   onClick={() => openPartnerModal(partner)}
-                  style={{animationDelay: `${index * 100}ms`}}
                   role="button"
                   tabIndex={0}
+                  style={{animationDelay: `${(index % 3) * 100 + Math.floor(index / 3) * 150}ms`}}
                 >
-                  <div className="h-40 bg-gray-100 flex items-center justify-center p-4">
+                  <div className="h-40 bg-gray-100 flex items-center justify-center p-4 relative">
                     <img 
                       src={partner.logo} 
                       alt={partner.name} 
-                      className={`max-h-32 max-w-full transition-opacity duration-300 ${imagesLoaded[partner.name] ? 'opacity-100' : 'opacity-0'}`} 
+                      className={`max-h-32 max-w-full transition-opacity duration-300 ${imagesLoaded[partner.name] ? 'opacity-100' : 'opacity-0'}`}
                       onLoad={() => handleImageLoad(partner.name)}
                       onError={(e) => {
                         e.target.onerror = null;
@@ -631,7 +636,7 @@ function App() {
                     />
                     {!imagesLoaded[partner.name] && (
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-10 h-10 border-4 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
+                        <div className="w-10 h-10 border-4 border-orange-500 border-t-transparent rounded-full spinning-icon"></div>
                       </div>
                     )}
                   </div>
