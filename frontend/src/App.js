@@ -863,11 +863,11 @@ function App() {
       {/* Partner Modal */}
       {showModal && selectedPartner && (
         <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4 fade-in" onClick={closePartnerModal}>
-          <div className="bg-white rounded-lg w-full max-w-4xl max-h-[90vh] overflow-y-auto zoom-in" onClick={(e) => e.stopPropagation()}>
+          <div className="bg-gray-900 rounded-lg w-full max-w-4xl max-h-[90vh] overflow-y-auto zoom-in" onClick={(e) => e.stopPropagation()}>
             <div className="p-6">
               <div className="flex justify-between items-start mb-6">
                 <div className="flex items-center">
-                  <div className="h-20 w-20 bg-gray-100 rounded-lg flex items-center justify-center mr-4 p-2">
+                  <div className="h-20 w-20 bg-gray-800 rounded-lg flex items-center justify-center mr-4 p-2">
                     <img 
                       src={selectedPartner.logo} 
                       alt={selectedPartner.name} 
@@ -886,7 +886,7 @@ function App() {
                     )}
                   </div>
                   <div>
-                    <h2 className="text-2xl font-bold">{selectedPartner.name}</h2>
+                    <h2 className="text-2xl font-bold text-white">{selectedPartner.name}</h2>
                     <span className={`inline-block mt-2 px-3 py-1 rounded-full text-xs ${
                       selectedPartner.status.includes('Research') 
                         ? 'bg-blue-100 text-blue-800' 
@@ -900,7 +900,7 @@ function App() {
                 </div>
                 <button 
                   onClick={closePartnerModal}
-                  className="text-gray-500 hover:text-gray-700 transition-colors duration-300"
+                  className="text-gray-400 hover:text-white transition-colors duration-300"
                   aria-label="Close modal"
                 >
                   <FaTimes className="text-2xl" />
@@ -908,8 +908,8 @@ function App() {
               </div>
               
               <div className="mb-6">
-                <h3 className="text-xl font-semibold mb-3">About</h3>
-                <p className="text-gray-700">{selectedPartner.description}</p>
+                <h3 className="text-xl font-semibold mb-3 text-white">About</h3>
+                <p className="text-gray-300">{selectedPartner.description}</p>
               </div>
               
               <div className="flex mb-6 space-x-4">
@@ -918,7 +918,7 @@ function App() {
                     href={selectedPartner.website} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="px-4 py-2 bg-gray-200 text-gray-800 rounded-full hover:bg-gray-300 transition-colors duration-300 flex items-center"
+                    className="netmind-button flex items-center"
                   >
                     <FaLink className="mr-2" />
                     <span>Visit Website</span>
@@ -930,7 +930,7 @@ function App() {
                     href={selectedPartner.twitterUrl} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors duration-300 flex items-center"
+                    className="netmind-button-secondary flex items-center"
                   >
                     <FaTwitter className="mr-2" />
                     <span>Twitter Announcement</span>
@@ -940,27 +940,27 @@ function App() {
               
               {selectedPartner.twitterUrl && (
                 <div className="mb-6">
-                  <h3 className="text-xl font-semibold mb-3">Announcement</h3>
-                  <div className="border border-gray-300 rounded-lg overflow-hidden">
+                  <h3 className="text-xl font-semibold mb-3 text-white">Announcement</h3>
+                  <div className="border border-gray-700 rounded-lg overflow-hidden bg-gray-800">
                     <div className="twitter-embed p-4">
-                      <p className="mb-4 text-gray-700">Twitter announcement for {selectedPartner.name}:</p>
+                      <p className="mb-4 text-gray-300">Twitter announcement for {selectedPartner.name}:</p>
                       <a 
                         href={selectedPartner.twitterUrl} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="text-blue-500 hover:underline block mb-4"
+                        className="text-blue-400 hover:underline block mb-4"
                       >
                         {selectedPartner.twitterUrl}
                       </a>
                       
                       {/* Twitter Embed Fallback */}
-                      <div className="bg-gray-100 p-4 rounded-lg">
-                        <p className="text-sm text-gray-600 mb-2">Click below to view the full announcement:</p>
+                      <div className="bg-gray-900 p-4 rounded-lg">
+                        <p className="text-sm text-gray-400 mb-2">Click below to view the full announcement:</p>
                         <a 
                           href={selectedPartner.twitterUrl} 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors duration-300 inline-flex items-center pulse-effect"
+                          className="netmind-button-secondary inline-flex items-center pulse-effect"
                         >
                           <FaTwitter className="mr-2" />
                           <span>View on Twitter</span>
@@ -970,7 +970,7 @@ function App() {
                       {/* Hidden Twitter Embed (will load if Twitter script works) */}
                       <div className="mt-4" dangerouslySetInnerHTML={{
                         __html: `
-                          <blockquote class="twitter-tweet" data-theme="light">
+                          <blockquote class="twitter-tweet" data-theme="dark">
                             <a href="${selectedPartner.twitterUrl}"></a>
                           </blockquote>
                           <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -984,7 +984,7 @@ function App() {
               <div className="flex justify-center">
                 <button 
                   onClick={closePartnerModal}
-                  className="px-6 py-2 bg-orange-500 text-white rounded-full hover:bg-orange-600 transition-colors duration-300"
+                  className="netmind-button"
                 >
                   Close
                 </button>
