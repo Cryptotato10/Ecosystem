@@ -779,13 +779,13 @@ function App() {
       <footer className="bg-black text-white py-12">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div>
+            <div className="fade-in">
               <img src="https://www.netmind.ai/assets/netmind_white-36738add.svg" alt="NetMind Logo" className="h-8 mb-4" />
               <p className="text-gray-400">
                 Decentralized intelligence for everyone. Power AI, train agents, and earn NMT through contributing idle GPUs.
               </p>
             </div>
-            <div>
+            <div className="fade-in animation-delay-300">
               <h4 className="text-lg font-bold mb-4">Ecosystem</h4>
               <ul className="space-y-2">
                 <li><a href="#" className="text-gray-400 hover:text-orange-500 transition-colors duration-300">Partners</a></li>
@@ -793,7 +793,7 @@ function App() {
                 <li><a href="#" className="text-gray-400 hover:text-orange-500 transition-colors duration-300">Exchanges</a></li>
               </ul>
             </div>
-            <div>
+            <div className="fade-in animation-delay-500">
               <h4 className="text-lg font-bold mb-4">Resources</h4>
               <ul className="space-y-2">
                 <li><a href="#" className="text-gray-400 hover:text-orange-500 transition-colors duration-300">Documentation</a></li>
@@ -801,7 +801,7 @@ function App() {
                 <li><a href="#" className="text-gray-400 hover:text-orange-500 transition-colors duration-300">Developers</a></li>
               </ul>
             </div>
-            <div>
+            <div className="fade-in animation-delay-700">
               <h4 className="text-lg font-bold mb-4">Connect</h4>
               <ul className="space-y-2">
                 <li><a href="#" className="text-gray-400 hover:text-orange-500 transition-colors duration-300">Twitter</a></li>
@@ -818,8 +818,8 @@ function App() {
 
       {/* Partner Modal */}
       {showModal && selectedPartner && (
-        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4 animate-fade-in" onClick={closePartnerModal}>
-          <div className="bg-white rounded-lg w-full max-w-4xl max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4 fade-in" onClick={closePartnerModal}>
+          <div className="bg-white rounded-lg w-full max-w-4xl max-h-[90vh] overflow-y-auto zoom-in" onClick={(e) => e.stopPropagation()}>
             <div className="p-6">
               <div className="flex justify-between items-start mb-6">
                 <div className="flex items-center">
@@ -837,7 +837,7 @@ function App() {
                     />
                     {!imagesLoaded[selectedPartner.name + "-modal"] && (
                       <div className="absolute flex items-center justify-center">
-                        <div className="w-6 h-6 border-2 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
+                        <div className="w-6 h-6 border-2 border-orange-500 border-t-transparent rounded-full spinning-icon"></div>
                       </div>
                     )}
                   </div>
@@ -916,7 +916,7 @@ function App() {
                           href={selectedPartner.twitterUrl} 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors duration-300 inline-flex items-center"
+                          className="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors duration-300 inline-flex items-center pulse-effect"
                         >
                           <FaTwitter className="mr-2" />
                           <span>View on Twitter</span>
@@ -954,7 +954,7 @@ function App() {
       {showBackToTop && (
         <button 
           onClick={scrollToTop} 
-          className="fixed right-8 bottom-8 p-4 bg-orange-500 text-white rounded-full shadow-lg hover:bg-orange-600 transition-all duration-300 transform hover:scale-110 z-40"
+          className="fixed right-8 bottom-8 p-4 bg-orange-500 text-white rounded-full shadow-lg hover:bg-orange-600 transition-all duration-300 transform hover:scale-110 z-40 fade-in animate-pulse"
           aria-label="Back to top"
         >
           <FaArrowUp />
