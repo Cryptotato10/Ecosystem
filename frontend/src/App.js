@@ -513,6 +513,13 @@ function App() {
 
   return (
     <div className="netmind-ecosystem">
+      {/* Loading Bar */}
+      {isLoading && (
+        <div className="loading-container fixed top-0 left-0 w-full z-50">
+          <div className="loading-bar"></div>
+        </div>
+      )}
+
       {/* Header */}
       <header className="bg-black">
         <div className="container mx-auto py-6 px-4 flex justify-between items-center">
