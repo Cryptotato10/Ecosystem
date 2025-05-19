@@ -55,6 +55,12 @@ body {
   flex-direction: column;
   position: relative;
   overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.partner-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .partner-card::after {
@@ -100,10 +106,101 @@ body {
   background: #e45e18;
 }
 
-/* Animations */
+/* Animations for NetMind Website */
+
+/* Loading Circle Animation */
+@keyframes loadingCircle {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Fade In Animation */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade Out Animation */
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Zoom In Animation */
+@keyframes zoomIn {
+  0% {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Zoom Out Animation */
+@keyframes zoomOut {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+}
+
+/* Progress Animation (Left to Right) */
+@keyframes progressLTR {
+  0% {
+    transform: translateX(-100%) scaleX(0);
+    opacity: 0.1;
+  }
+  20% {
+    transform: translateX(-100%) scaleX(0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(0px) scaleX(1);
+    opacity: 0;
+  }
+}
+
+/* Rotate Animation */
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Spin Animation */
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Fade Change Animation */
+@keyframes fadeChange {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
 }
 
 @keyframes slideInRight {
@@ -120,6 +217,63 @@ body {
   0% { transform: scale(1); }
   50% { transform: scale(1.05); }
   100% { transform: scale(1); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes glowingBorder {
+  0% { box-shadow: 0 0 5px var(--primary-color); }
+  50% { box-shadow: 0 0 20px var(--primary-color); }
+  100% { box-shadow: 0 0 5px var(--primary-color); }
+}
+
+/* Apply animations to elements */
+.loading-icon {
+  animation: loadingCircle 1s infinite linear;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.fade-out {
+  animation: fadeOut 0.5s ease forwards;
+}
+
+.zoom-in {
+  animation: zoomIn 0.5s ease forwards;
+}
+
+.zoom-out {
+  animation: zoomOut 0.5s ease forwards;
+}
+
+.progress-bar {
+  animation: progressLTR 2s ease-in-out infinite;
+}
+
+.rotating-element {
+  animation: rotate 10s linear infinite;
+}
+
+.spinning-icon {
+  animation: spin 1.5s linear infinite;
+}
+
+.pulse-effect {
+  animation: fadeChange 2s ease-in-out infinite;
+}
+
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
+
+.glow-border {
+  animation: glowingBorder 2s ease-in-out infinite;
 }
 
 .animate-fade-in {
@@ -146,6 +300,14 @@ body {
   animation-delay: 500ms;
 }
 
+.animation-delay-700 {
+  animation-delay: 700ms;
+}
+
+.animation-delay-1000 {
+  animation-delay: 1000ms;
+}
+
 /* Twitter Embed */
 .twitter-embed {
   min-height: 200px;
@@ -157,6 +319,84 @@ body {
 
 .twitter-embed iframe {
   width: 100% !important;
+}
+
+/* Custom Section Styles */
+.section-heading {
+  position: relative;
+  display: inline-block;
+}
+
+.section-heading::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background: var(--primary-color);
+  bottom: -8px;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.section-heading:hover::after {
+  transform: scaleX(1);
+}
+
+/* Blockchain Card Styles */
+.blockchain-card {
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.blockchain-card:hover {
+  transform: translateY(-10px);
+}
+
+.blockchain-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255,111,32,0.1), rgba(0,163,224,0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.blockchain-card:hover::before {
+  opacity: 1;
+}
+
+/* Exchange Card Styles */
+.exchange-card {
+  transition: all 0.3s ease;
+}
+
+.exchange-card:hover {
+  transform: translateY(-5px) scale(1.05);
+  z-index: 1;
+}
+
+/* Loading Container */
+.loading-container {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  margin-bottom: 20px;
+  background-color: rgba(255, 111, 32, 0.1);
+  overflow: hidden;
+}
+
+.loading-bar {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+  animation: progressLTR 2s ease-in-out infinite;
 }
 
 /* Responsive Adjustments */
