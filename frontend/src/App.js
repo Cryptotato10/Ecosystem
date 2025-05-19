@@ -717,15 +717,15 @@ function App() {
       <section className="web3-integrations bg-gray-900 py-20">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12 text-white">
-            <span className="border-b-4 border-orange-500 pb-2">Web3 Integrations</span>
+            <span className="section-heading text-white">Web3 Integrations</span>
           </h2>
           
           {/* Blockchains */}
           <div className="mb-16">
-            <h3 className="text-2xl font-bold mb-8 text-center text-white">Supported Blockchains</h3>
+            <h3 className="text-2xl font-bold mb-8 text-center text-white fade-in">Supported Blockchains</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {blockchains.map((blockchain, index) => (
-                <div key={index} className="blockchain-card bg-black bg-opacity-50 rounded-lg p-6 text-center transition-all duration-300 transform hover:scale-105 animate-fade-in" style={{animationDelay: `${index * 100}ms`}}>
+                <div key={index} className="blockchain-card bg-black bg-opacity-50 rounded-lg p-6 text-center transition-all duration-300 floating" style={{animationDelay: `${index * 150}ms`}}>
                   <div className="h-24 flex items-center justify-center mb-4">
                     {blockchain.icon}
                   </div>
@@ -737,14 +737,14 @@ function App() {
           
           {/* Exchanges */}
           <div>
-            <h3 className="text-2xl font-bold mb-8 text-center text-white">Exchanges</h3>
+            <h3 className="text-2xl font-bold mb-8 text-center text-white fade-in">Exchanges</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* DEXes */}
-              <div className="bg-black bg-opacity-30 rounded-lg p-6">
+              <div className="bg-black bg-opacity-30 rounded-lg p-6 animate-slide-in-left">
                 <h4 className="text-xl font-bold mb-6 text-center text-white">Decentralized Exchanges (DEXes)</h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {dexes.map((dex, index) => (
-                    <div key={index} className="exchange-card bg-black bg-opacity-50 rounded-lg p-4 text-center transition-all duration-300 transform hover:scale-105 animate-fade-in" style={{animationDelay: `${index * 100}ms`}}>
+                    <div key={index} className="exchange-card bg-black bg-opacity-50 rounded-lg p-4 text-center transition-all duration-300 zoom-in" style={{animationDelay: `${index * 100}ms`}}>
                       <div className="h-16 flex items-center justify-center mb-2">
                         {dex.icon}
                       </div>
@@ -756,11 +756,11 @@ function App() {
               </div>
               
               {/* CEXes */}
-              <div className="bg-black bg-opacity-30 rounded-lg p-6">
+              <div className="bg-black bg-opacity-30 rounded-lg p-6 animate-slide-in-right">
                 <h4 className="text-xl font-bold mb-6 text-center text-white">Centralized Exchanges (CEXes)</h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {cexes.map((cex, index) => (
-                    <div key={index} className="exchange-card bg-black bg-opacity-50 rounded-lg p-4 text-center transition-all duration-300 transform hover:scale-105 animate-fade-in" style={{animationDelay: `${index * 100}ms`}}>
+                    <div key={index} className="exchange-card bg-black bg-opacity-50 rounded-lg p-4 text-center transition-all duration-300 zoom-in" style={{animationDelay: `${index * 100}ms`}}>
                       <div className="h-16 flex items-center justify-center mb-2">
                         {cex.icon}
                       </div>
