@@ -1,33 +1,35 @@
-/* NetMind Ecosystem Page Styles */
+/* NetMind Ecosystem Page Styles - Updated to match NetMind.io design */
 
 /* General Styles */
 body {
   font-family: 'Arial', sans-serif;
-  color: #333;
+  color: #fff;
   line-height: 1.6;
   scroll-behavior: smooth;
+  background-color: #000;
 }
 
-/* NetMind Colors */
+/* NetMind Colors - Updated to match NetMind.io */
 :root {
-  --primary-color: #FF6F20; /* Orange */
-  --secondary-color: #00A3E0; /* Blue */
-  --accent-color: #F4C300; /* Yellow */
+  --primary-color: #FF6F20; /* Orange accent */
+  --secondary-color: #0066ff; /* Blue accent */
+  --tertiary-color: #00c389; /* Green accent */
   --dark-color: #000000;
   --light-color: #FFFFFF;
   --gray-dark: #1A1A1A;
-  --gray-medium: #4A4A4A;
-  --gray-light: #F5F5F5;
+  --gray-medium: #333333;
+  --gray-light: #444444;
 }
 
 /* Hero Section */
 .hero-section {
   position: relative;
-  background: url('https://images.unsplash.com/photo-1597733336794-12d05021d510') center/cover no-repeat;
+  background: #000;
   color: var(--light-color);
   min-height: 500px;
   display: flex;
   align-items: center;
+  overflow: hidden;
 }
 
 .hero-section .overlay {
@@ -36,16 +38,34 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8));
+  z-index: 1;
 }
 
 .hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .search-bar {
   max-width: 600px;
+}
+
+/* Particle Background Animation */
+.particle-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--primary-color);
+  opacity: 0.3;
 }
 
 /* Partner Cards */
@@ -55,12 +75,14 @@ body {
   flex-direction: column;
   position: relative;
   overflow: hidden;
+  background-color: var(--gray-medium);
+  border: 1px solid #333;
   transition: all 0.3s ease;
 }
 
 .partner-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 20px rgba(255, 111, 32, 0.2);
 }
 
 .partner-card::after {
@@ -94,7 +116,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--gray-medium);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -106,16 +128,13 @@ body {
   background: #e45e18;
 }
 
-/* Animations for NetMind Website */
-
-/* Loading Circle Animation */
+/* Atom Animations for NetMind */
 @keyframes loadingCircle {
   100% {
     transform: rotate(360deg);
   }
 }
 
-/* Fade In Animation */
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -127,7 +146,6 @@ body {
   }
 }
 
-/* Fade Out Animation */
 @keyframes fadeOut {
   0% {
     opacity: 1;
@@ -137,7 +155,6 @@ body {
   }
 }
 
-/* Zoom In Animation */
 @keyframes zoomIn {
   0% {
     transform: scale(0.2);
@@ -149,7 +166,6 @@ body {
   }
 }
 
-/* Zoom Out Animation */
 @keyframes zoomOut {
   0% {
     transform: scale(1);
@@ -160,7 +176,6 @@ body {
   }
 }
 
-/* Progress Animation (Left to Right) */
 @keyframes progressLTR {
   0% {
     transform: translateX(-100%) scaleX(0);
@@ -176,21 +191,18 @@ body {
   }
 }
 
-/* Rotate Animation */
 @keyframes rotate {
   100% {
     transform: rotate(360deg);
   }
 }
 
-/* Spin Animation */
 @keyframes spin {
   100% {
     transform: rotate(360deg);
   }
 }
 
-/* Fade Change Animation */
 @keyframes fadeChange {
   0% {
     opacity: 1;
@@ -229,6 +241,32 @@ body {
   0% { box-shadow: 0 0 5px var(--primary-color); }
   50% { box-shadow: 0 0 20px var(--primary-color); }
   100% { box-shadow: 0 0 5px var(--primary-color); }
+}
+
+@keyframes atomFloat {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-10px) translateX(5px);
+  }
+  50% {
+    transform: translateY(0) translateX(10px);
+  }
+  75% {
+    transform: translateY(10px) translateX(5px);
+  }
+}
+
+@keyframes atomPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
 }
 
 /* Apply animations to elements */
@@ -292,6 +330,13 @@ body {
   animation: pulse 2s infinite;
 }
 
+.atom {
+  position: absolute;
+  background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: atomFloat 8s ease-in-out infinite, atomPulse 4s ease-in-out infinite;
+}
+
 .animation-delay-300 {
   animation-delay: 300ms;
 }
@@ -344,14 +389,62 @@ body {
   transform: scaleX(1);
 }
 
+/* NetMind Button Styles */
+.netmind-button {
+  background: linear-gradient(to right, var(--primary-color), #ff9662);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(255, 111, 32, 0.3);
+}
+
+.netmind-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(255, 111, 32, 0.4);
+}
+
+.netmind-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(255, 111, 32, 0.3);
+}
+
+.netmind-button-secondary {
+  background: linear-gradient(to right, var(--secondary-color), #3399ff);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 102, 255, 0.3);
+}
+
+.netmind-button-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 102, 255, 0.4);
+}
+
+.netmind-button-secondary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(0, 102, 255, 0.3);
+}
+
 /* Blockchain Card Styles */
 .blockchain-card {
   transition: all 0.3s ease;
   overflow: hidden;
+  background-color: var(--gray-medium);
+  border: 1px solid #333;
 }
 
 .blockchain-card:hover {
   transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(255, 111, 32, 0.2);
 }
 
 .blockchain-card::before {
@@ -361,7 +454,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(45deg, rgba(255,111,32,0.1), rgba(0,163,224,0.1));
+  background: linear-gradient(45deg, rgba(255,111,32,0.1), rgba(0,102,255,0.1));
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 0;
@@ -374,11 +467,14 @@ body {
 /* Exchange Card Styles */
 .exchange-card {
   transition: all 0.3s ease;
+  background-color: var(--gray-medium);
+  border: 1px solid #333;
 }
 
 .exchange-card:hover {
   transform: translateY(-5px) scale(1.05);
   z-index: 1;
+  box-shadow: 0 10px 20px rgba(255, 111, 32, 0.2);
 }
 
 /* Loading Container */
@@ -397,6 +493,28 @@ body {
   height: 100%;
   background: linear-gradient(to right, transparent, var(--primary-color), transparent);
   animation: progressLTR 2s ease-in-out infinite;
+}
+
+/* NetMind Specific Styles */
+.partners-grid, .category-filter {
+  background-color: var(--dark-color);
+}
+
+.category-filter button {
+  background-color: var(--gray-medium);
+  color: var(--light-color);
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.category-filter button.active {
+  background: linear-gradient(to right, var(--primary-color), #ff9662);
+  box-shadow: 0 4px 10px rgba(255, 111, 32, 0.3);
+}
+
+.netmind-card-content {
+  background-color: var(--gray-medium);
+  color: var(--light-color);
 }
 
 /* Responsive Adjustments */
