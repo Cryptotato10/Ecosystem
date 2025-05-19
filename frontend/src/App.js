@@ -22,16 +22,18 @@ function App() {
   useEffect(() => {
     const createParticles = () => {
       const newParticles = [];
-      const colors = ['#FF6F20', '#0066ff', '#00c389'];
+      const colors = ['#FF6F20', '#0066ff', '#00c389']; // Orange, Blue, Green
+      const sizes = [5, 8, 12, 15, 20]; // Different sizes for variety
       
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < 40; i++) {
         newParticles.push({
           id: i,
           x: Math.random() * 100,
           y: Math.random() * 100,
-          size: Math.random() * 15 + 5,
+          size: sizes[Math.floor(Math.random() * sizes.length)],
           color: colors[Math.floor(Math.random() * colors.length)],
-          delay: Math.random() * 5
+          delay: Math.random() * 5,
+          duration: 8 + Math.random() * 7 // Random duration between 8-15s
         });
       }
       
@@ -39,6 +41,37 @@ function App() {
     };
     
     createParticles();
+    
+    // Add animation frames for continuous movement
+    let animationId;
+    const animateParticles = () => {
+      setParticles(prevParticles => 
+        prevParticles.map(particle => {
+          // Small random movement
+          const newX = particle.x + (Math.random() * 0.4 - 0.2);
+          const newY = particle.y + (Math.random() * 0.4 - 0.2);
+          
+          // Keep particles within bounds
+          return {
+            ...particle,
+            x: newX > 0 && newX < 100 ? newX : particle.x,
+            y: newY > 0 && newY < 100 ? newY : particle.y
+          };
+        })
+      );
+      
+      animationId = requestAnimationFrame(animateParticles);
+    };
+    
+    // Start animation
+    animationId = requestAnimationFrame(animateParticles);
+    
+    // Cleanup
+    return () => {
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+    };
   }, []);
 
   // Partners data
