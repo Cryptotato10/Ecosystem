@@ -14,7 +14,32 @@ function App() {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [imagesLoaded, setImagesLoaded] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [particles, setParticles] = useState([]);
+  const particleRef = useRef(null);
   const partnersPerPage = 9;
+  
+  // Create particles for animation
+  useEffect(() => {
+    const createParticles = () => {
+      const newParticles = [];
+      const colors = ['#FF6F20', '#0066ff', '#00c389'];
+      
+      for (let i = 0; i < 30; i++) {
+        newParticles.push({
+          id: i,
+          x: Math.random() * 100,
+          y: Math.random() * 100,
+          size: Math.random() * 15 + 5,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          delay: Math.random() * 5
+        });
+      }
+      
+      setParticles(newParticles);
+    };
+    
+    createParticles();
+  }, []);
 
   // Partners data
   useEffect(() => {
