@@ -611,7 +611,9 @@ function App() {
                 width: `${particle.size}px`,
                 height: `${particle.size}px`,
                 backgroundColor: particle.color,
-                animationDelay: `${particle.delay}s`
+                opacity: 0.6 + (Math.random() * 0.4),
+                animationDelay: `${particle.delay}s`,
+                animationDuration: `${particle.duration}s`
               }}
             />
           ))}
